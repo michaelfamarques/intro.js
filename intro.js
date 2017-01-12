@@ -64,6 +64,8 @@
       showProgress: false,
       /* Scroll to highlighted element? */
       scrollToElement: true,
+      /* Scroll to highlighted element? */
+      scrollParent: null,
       /* Set the overlay opacity */
       overlayOpacity: 0.8,
       /* Padding to add after scrolling when element is not in the viewport (in pixels) */
@@ -1070,11 +1072,11 @@
 
       //Scroll up
       if (top < 0 || targetElement.element.clientHeight > winHeight) {
-        window.scrollBy(0, top - this._options.scrollPadding); // 30px padding from edge to look nice
+        (this._options.scrollParent || window).scrollBy(0, top - this._options.scrollPadding); // 30px padding from edge to look nice
 
       //Scroll down
       } else {
-        window.scrollBy(0, bottom + 70 + this._options.scrollPadding); // 70px + 30px padding from edge to look nice
+        (this._options.scrollParent || window).scrollBy(0, bottom + 70 + this._options.scrollPadding); // 70px + 30px padding from edge to look nice
       }
     }
 
